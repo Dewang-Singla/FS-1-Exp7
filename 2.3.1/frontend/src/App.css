@@ -1,0 +1,56 @@
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.form-control, .form-control:focus {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid #30363d;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.15);
+  border-color: #58a6ff;
+}
+
+.btn {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+  border: none;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(35, 134, 54, 0.4);
+}
+
+.navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row {
+  animation: fadeInUp 0.5s ease-out;
+}
