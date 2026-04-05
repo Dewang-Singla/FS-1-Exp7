@@ -1,61 +1,92 @@
-# Experiment 2.3 – Full Stack Integration (MERN)
-### Course: CONT_24CSP-293 | Full Stack-I
+# Experiment 2.3 - Full Stack I
 
----
+This repository contains both:
 
-## Sub-Experiments
+1. Individual experiment implementations in separate folders.
+2. A combined integrated implementation at the project root.
 
-| Experiment | Topic | Port (Backend) | Port (Frontend) |
-|------------|-------|---------------|-----------------|
-| 2.3.1 | React-Express Integration with Axios | 5000 | 3000 |
-| 2.3.2 | Redux Shopping Cart | — (frontend only) | 3000 |
-| 2.3.3 | Real-Time Chat with Socket.IO | 5001 | 3000 |
+## Repository Structure
 
----
+### Individual Experiments
 
-## Quick Start
+- [2.3.1](2.3.1): React + Axios + Express + MongoDB (Products CRUD)
+- [2.3.2](2.3.2): Redux Shopping Cart (Frontend only)
+- [2.3.3](2.3.3): Real-Time Chat (Socket.IO)
 
-### Experiment 2.3.1
+Each folder above can be run independently as its own experiment.
+
+### Combined Integrated Project
+
+- [backend](backend): Unified Express + MongoDB + Socket.IO server
+- [frontend](frontend): Unified React app with routing for Products, Cart, and Chat
+
+This root-level setup combines all three experiments into one deployable full-stack application.
+
+## Run Individual Experiments
+
+### 2.3.1 (Standalone)
+
 ```bash
-cd 2.3.1/backend && npm install && node server.js
-cd 2.3.1/frontend && npm install && npm start
-```
-**Requires:** MongoDB running locally (or update MONGO_URI in backend/server.js)
+cd 2.3.1/backend
+npm install
+npm run dev
 
-### Experiment 2.3.2
+cd ../frontend
+npm install
+npm start
+```
+
+### 2.3.2 (Standalone)
+
 ```bash
-cd 2.3.2 && npm install && npm start
+cd 2.3.2
+npm install
+npm start
 ```
-**No backend needed** — Redux state with localStorage persistence.
 
-### Experiment 2.3.3
+### 2.3.3 (Standalone)
+
 ```bash
-cd 2.3.3/backend && npm install && node server.js
-cd 2.3.3/frontend && npm install && npm start
+cd 2.3.3/backend
+npm install
+npm run dev
+
+cd ../frontend
+npm install
+npm start
 ```
-Open multiple browser tabs to test multi-user chat.
 
----
+## Run Combined Root Project
 
-## Viva Voce Quick Answers
+### Backend
 
-### 2.3.1
-1. **Axios vs fetch**: Axios auto-parses JSON, has interceptors, better error handling, request cancellation.
-2. **CORS**: Cross-Origin Resource Sharing — handled in Express via `cors` middleware.
-3. **useEffect cleanup**: Returns a function to cancel subscriptions/timers to prevent memory leaks.
-4. **JWT**: Sign token on login, send in `Authorization: Bearer <token>` header, verify in Express middleware.
-5. **React hooks rules**: Only call at top level, only in React functions, never in loops/conditions.
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-### 2.3.2
-1. **Redux Toolkit advantages**: Less boilerplate, built-in Immer (mutable syntax), createSlice, RTK Query.
-2. **Redux middleware**: Functions between dispatch and reducer — used for logging, async (thunk), side effects.
-3. **Redux DevTools**: Time-travel debugging, action/state inspection, diff viewer.
-4. **Async actions**: Use `createAsyncThunk` from Redux Toolkit for API calls.
-5. **Selector functions**: Pure functions that extract derived data from Redux state efficiently (e.g., `reselect`).
+### Frontend
 
-### 2.3.3
-1. **WebSockets vs HTTP**: WebSockets = full-duplex persistent TCP; HTTP = half-duplex request-response.
-2. **Socket.IO fallback**: Falls back to HTTP long-polling when WebSockets are blocked by proxies/firewalls.
-3. **Reconnection**: Socket.IO retries with exponential backoff automatically; customise via `reconnectionDelay`.
-4. **Rooms**: Named channels — `socket.join('room')` / `io.to('room').emit(...)` for targeted broadcast.
-5. **Private messaging**: Create a room per pair of users, route messages to that room only.
+```bash
+cd frontend
+npm install
+npm start
+```
+
+## Environment Variables
+
+### Backend [.env](backend/.env)
+
+- PORT=5000
+- MONGO_URI=your_mongodb_connection_string
+- FRONTEND_URL=http://localhost:3000
+
+### Frontend [.env](frontend/.env)
+
+- REACT_APP_API_BASE_URL=http://localhost:5000
+
+## Notes
+
+- If you only want to evaluate each experiment separately, use [2.3.1](2.3.1), [2.3.2](2.3.2), and [2.3.3](2.3.3).
+- If you want a single integrated submission/deployment, use [backend](backend) and [frontend](frontend) at the root.
